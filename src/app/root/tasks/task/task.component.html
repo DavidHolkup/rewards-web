@@ -1,1 +1,18 @@
-<p>task works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{task.name}}</mat-card-title>
+      <mat-card-subtitle>{{task.stars}} stars</mat-card-subtitle>
+      <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    {{task.description}}
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-card-actions>
+      <button mat-button>DONE!!!</button>
+    </mat-card-actions>
+  </mat-card-footer>
+  
+</mat-card>

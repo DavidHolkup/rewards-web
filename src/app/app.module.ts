@@ -8,6 +8,8 @@ import { RootComponent } from './root/root.component';
 import { RewardsComponent } from './root/rewards/rewards.component';
 import { TasksComponent } from './root/tasks/tasks.component';
 import { TaskComponent } from './root/tasks/task/task.component';
+import { MatCardModule } from '@angular/material/card'
+import { MatToolbarModule } from '@angular/material/toolbar'
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { TaskComponent } from './root/tasks/task/task.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
