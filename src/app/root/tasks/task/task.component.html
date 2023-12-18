@@ -2,17 +2,15 @@
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>{{task.name}}</mat-card-title>
-      <mat-card-subtitle>{{task.stars}} stars</mat-card-subtitle>
-      <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+      <mat-card-subtitle color="primary">{{task.stars}} stars</mat-card-subtitle>
+      <mat-card-subtitle>
+        {{task.description}}
+      </mat-card-subtitle>
+      <mat-card-subtitle style="margin-top: 2.5rem;">
+          <button mat-flat-button color="primary" [disableRipple]="!config.features.button.ripple">Complete</button>
+      </mat-card-subtitle>
+      <img *ngIf="config.features.images" mat-card-lg-image [src]="task.image" >
     </mat-card-title-group>
   </mat-card-header>
-  <mat-card-content>
-    {{task.description}}
-  </mat-card-content>
-  <mat-card-footer>
-    <mat-card-actions>
-      <button mat-button>DONE!!!</button>
-    </mat-card-actions>
-  </mat-card-footer>
-  
+  <mat-card-content></mat-card-content>
 </mat-card>

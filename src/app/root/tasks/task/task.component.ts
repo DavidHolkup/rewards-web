@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Task } from '../tasks.component';
+import { Config, Task } from '../../config'
 
 @Component({
   selector: 'app-task',
@@ -8,5 +8,6 @@ import { Task } from '../tasks.component';
 })
 export class TaskComponent {
   @Input() task!: Task
+  @Input() config!: Config
 
 }

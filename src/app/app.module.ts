@@ -9,7 +9,10 @@ import { RewardsComponent } from './root/rewards/rewards.component';
 import { TasksComponent } from './root/tasks/tasks.component';
 import { TaskComponent } from './root/tasks/task/task.component';
 import { MatCardModule } from '@angular/material/card'
+import { MatTabsModule } from '@angular/material/tabs'
 import { MatToolbarModule } from '@angular/material/toolbar'
+import {MatRippleModule} from '@angular/material/core';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { MatToolbarModule } from '@angular/material/toolbar'
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatTabsModule,
     MatToolbarModule,
+    MatRippleModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

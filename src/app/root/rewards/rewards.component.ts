@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Config } from '../config';
 
 @Component({
   selector: 'app-rewards',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./rewards.component.scss']
 })
 export class RewardsComponent {
-
+  @Input() config!: Config
 }

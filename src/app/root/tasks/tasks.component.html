@@ -1,3 +1,3 @@
-<div *ngFor="let task of tasks">
-  <app-task [task]="task"></app-task>
+<div *ngFor="let task of config.tasks">
+  <app-task [config]="config" [task]="task"></app-task>
 </div>
