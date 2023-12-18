@@ -7,9 +7,13 @@
         {{task.description}}
       </mat-card-subtitle>
       <mat-card-subtitle style="margin-top: 2.5rem;">
-          <button mat-flat-button color="primary" [disableRipple]="!config.features.button.ripple">Complete</button>
+        <button mat-flat-button color="primary" 
+                [disableRipple]="!config.features.button.ripple"
+                (click)="onClick($event)">
+          Complete
+        </button>
       </mat-card-subtitle>
-      <img *ngIf="config.features.images" mat-card-lg-image [src]="task.image" >
+      <img *ngIf="config.features.images" mat-card-lg-image [src]="task.image">
     </mat-card-title-group>
   </mat-card-header>
   <mat-card-content></mat-card-content>

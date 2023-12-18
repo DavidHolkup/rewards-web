@@ -4,6 +4,7 @@ export interface Config {
     features: {
         button: {
             ripple: boolean,
+            confetti: number,
         }
         images: boolean,
     },
