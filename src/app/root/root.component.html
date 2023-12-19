@@ -1,11 +1,40 @@
-<div class="col">
-  <mat-toolbar>
+<div class="col" [ngClass]="{'background1': config.features.background > 0}">
+  <mat-toolbar style="z-index: 10;">
     <span>StarTrack ;)</span>
     <span style="margin-left: auto">Star Counter</span>
   </mat-toolbar>
-  
-  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" class="grow1" style="margin: 1rem 20rem">
+
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" class="grow1" style="padding: 1rem 20rem">
     <mat-tab label="Rewards"> <app-rewards [config]="config" class="grow1"></app-rewards> </mat-tab>
     <mat-tab label="Tasks"> <app-tasks [config]="config" class="grow1"></app-tasks> </mat-tab>
   </mat-tab-group>
+
+  <div class="bubbles" *ngIf="config.features.background === 2">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <div class="squares" *ngIf="config.features.background > 2">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </div>
+
+  <ng-particles *ngIf="config.features.background > 3" [id]="myParticles" [options]="particlesOptions"></ng-particles>
+
 </div>

@@ -5,7 +5,9 @@ export interface Config {
         button: {
             ripple: boolean,
             confetti: number,
+            sound: boolean,
         }
+        background: number,
         images: boolean,
     },
     rewards: Reward[],
