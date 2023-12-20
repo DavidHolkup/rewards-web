@@ -14,6 +14,7 @@ export class RootComponent implements OnInit {
         ripple: false,
         confetti: 0,
         sound: false,
+        animation: false,
       },
       background: 0,
       images: true,

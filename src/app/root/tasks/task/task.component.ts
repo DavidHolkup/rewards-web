@@ -1,18 +1,24 @@
 import { Component, Input } from '@angular/core';
 import { Config, Task } from '../../config'
 import { confetti } from 'tsparticles-confetti';
+import { rubberBandAnimation, tadaAnimation } from 'angular-animations';
 
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss']
+  styleUrls: ['./task.component.scss'],
+  animations: [tadaAnimation()]
 })
 export class TaskComponent {
 
   @Input() task!: Task
   @Input() config!: Config
 
+  animateButton = false
+
   onClick(event: MouseEvent) {
+    setTimeout(() => this.animateButton = this.config.features.button.animation)
+
     const x = this.xCord(event.clientX)
     const y = this.yCord(event.clientY)
 

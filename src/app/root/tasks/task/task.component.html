@@ -9,6 +9,8 @@
       <mat-card-subtitle style="margin-top: 2.5rem;">
         <button mat-flat-button color="primary" 
                 [disableRipple]="!config.features.button.ripple"
+                [@tada]="animateButton"
+                (@tada.done)="animateButton = false"
                 (click)="onClick($event)">
           Complete
         </button>

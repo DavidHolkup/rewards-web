@@ -6,6 +6,7 @@ export interface Config {
             ripple: boolean,
             confetti: number,
             sound: boolean,
+            animation: boolean,
         }
         background: number,
         images: boolean,
