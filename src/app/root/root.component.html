@@ -1,7 +1,10 @@
 <div class="col" [ngClass]="{'background1': config.features.background > 0}">
   <mat-toolbar style="z-index: 10;">
     <span>StarTrack ;)</span>
-    <span style="margin-left: auto">Star Counter</span>
+    <span style="margin-left: auto">{{config.starsAvailable}} 
+      <span *ngIf="config.features.emojis"> ⭐</span>
+      <span *ngIf="!config.features.emojis"> Hvezd</span>
+    </span>
   </mat-toolbar>
 
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" class="grow1" style="padding: 1rem 20rem">

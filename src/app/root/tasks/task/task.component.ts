@@ -19,6 +19,8 @@ export class TaskComponent {
   onClick(event: MouseEvent) {
     setTimeout(() => this.animateButton = this.config.features.button.animation)
 
+    this.task.callback(this.config)
+
     const x = this.xCord(event.clientX)
     const y = this.yCord(event.clientY)
 

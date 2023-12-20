@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Config } from './config';
+import { Config, Task } from './config';
 
 @Component({
   selector: 'app-root',
@@ -18,49 +18,66 @@ export class RootComponent implements OnInit {
       },
       background: 0,
       images: true,
+      emojis: true,
     },
     rewards: [],
     tasks: [
-      {
+      new Task({
         name: "Naucit se otazku",
         description: "Naucit se uplne novou otazku",
         stars: 2,
         image: "../../assets/images/naucitSeOtazku.jpeg",
         sound: "../../assets/sound/correct1.mp3",
-      }, {
+        emoji: "🚀",
+      }), new Task({
         name: "Zopakovat otazku",
         description: "Zopakovat si otazku, kterou uz jsi prosla.",
         stars: 1,
         image: "../../assets/images/zopakovatOtazku.jpg",
         sound: "../../assets/sound/correct1.mp3",
-      }, {
+        emoji: "🚀",
+      }), new Task({
         name: "Zkouska A",
         description: "Dostat ze zkousky Acko.",
         stars: 15,
         image: "../../assets/images/zkouskaA.jpeg",
         sound: "../../assets/sound/correct2.mp3",
-      }, {
+        emoji: "🎉",
+      }), new Task({
         name: "Zkouska B",
         description: "Dostat ze zkousky Bcko.",
         stars: 12,
         image: "../../assets/images/zkouskaB.jpeg",
         sound: "../../assets/sound/correct2.mp3",
-      }, {
+        emoji: "🎉",
+      }), new Task({
         name: "Zkouska C",
         description: "Dostat ze zkousky Ccko.",
         stars: 8,
         image: "../../assets/images/zkouskaC.png",
         sound: "../../assets/sound/correct2.mp3",
-      }, {
+        emoji: "🎉",
+      }), new Task({
         name: "Statnice",
         description: "Udelat statnice.",
         stars: 30,
         image: "../../assets/images/statnice.jpeg",
         sound: "../../assets/sound/correct2.mp3",
-      },
+        emoji: "🥂"
+      }),
     ],
-    starsAvailable: 10,
-    starsTotal: 54,
+    starsAvailable: 0,
+    starsTotal: 0,
+    stats: {
+      tasks: {
+        "Naucit se otazku": 0,
+        "Zopakovat otazku": 0,
+        "Zkouska A": 0,
+        "Zkouska B": 0,
+        "Zkouska C": 0,
+        "Statnice": 0,
+      }
+    }
   }
 
   particlesOptions = {}
@@ -69,63 +86,68 @@ export class RootComponent implements OnInit {
     this.particlesOptions = this.createParticleOptions();
   }
 
-  createParticleOptions() {
+  createTaskCallback(stars: number) {
+    return (config: Config) => {
+      config.starsAvailable += stars
+      config.starsTotal += stars
+    }
+  }
 
-  
-  return {
-    fpsLimit: 60,
-    interactivity: {
-      events: {
-        onhover: {
-          enable: this.config.features.background > 6,
-          mode: "grab"
+  createParticleOptions() {
+    return {
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onhover: {
+            enable: this.config.features.background > 6,
+            mode: "grab"
+          },
+          onclick: {
+            enable: this.config.features.background > 7,
+            mode: "push"
+          },
+
+        }
+      },
+      particles: {
+        color: {
+          value: "#ffffff",
         },
-        onclick: {
-          enable: this.config.features.background > 7,
-          mode: "push"
+        links: {
+          color: "#ffffff",
+          distance: 150,
+          enable: this.config.features.background > 4,
+          opacity: 0.5,
+          width: 1,
         },
-        
-      }
-    },
-    particles: {
-      color: {
-        value: "#ffffff",
-      },
-      links: {
-        color: "#ffffff",
-        distance: 150,
-        enable: this.config.features.background > 4,
-        opacity: 0.5,
-        width: 1,
-      },
-      move: {
-        // direction: MoveDirection.none,
-        enable: this.config.features.background > 5,
-        random: false,
-        speed: 1,
-        straight: false,
-      },
-      number: {
-        density: {
-          enable: true,
-          area: 800,
+        move: {
+          // direction: MoveDirection.none,
+          enable: this.config.features.background > 5,
+          random: false,
+          speed: 1,
+          straight: false,
         },
-        value: 30,
+        number: {
+          density: {
+            enable: true,
+            area: 800,
+          },
+          value: 30,
+        },
+        opacity: {
+          value: 0.5,
+        },
+        shape: {
+          type: "circle",
+        },
+        size: {
+          value: { min: 1, max: 5 },
+        },
       },
-      opacity: {
-        value: 0.5,
-      },
-      shape: {
-        type: "circle",
-      },
-      size: {
-        value: { min: 1, max: 5 },
-      },
-    },
-    detectRetina: true,
-  };
+      detectRetina: true,
+    };
   }
   myParticles = "particles";
-  
+
 
 }

@@ -13,6 +13,7 @@
                 (@tada.done)="animateButton = false"
                 (click)="onClick($event)">
           Complete
+          <span *ngIf="config.features.emojis">{{task.emoji}}</span>
         </button>
       </mat-card-subtitle>
       <img *ngIf="config.features.images" mat-card-lg-image [src]="task.image">
