@@ -2,7 +2,10 @@
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>{{task.name}}</mat-card-title>
-      <mat-card-subtitle color="primary">{{task.stars}} stars</mat-card-subtitle>
+      <mat-card-subtitle color="primary">{{task.stars}}
+        <span *ngIf="config.features.emojis"> ⭐</span>
+        <span *ngIf="!config.features.emojis"> Hvezd</span>
+      </mat-card-subtitle>
       <mat-card-subtitle>
         {{task.description}}
       </mat-card-subtitle>
@@ -12,7 +15,7 @@
                 [@tada]="animateButton"
                 (@tada.done)="animateButton = false"
                 (click)="onClick($event)">
-          Complete
+          Dokoncit
           <span *ngIf="config.features.emojis">{{task.emoji}}</span>
         </button>
       </mat-card-subtitle>

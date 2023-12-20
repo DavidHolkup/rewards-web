@@ -1,1 +1,3 @@
-<p>rewards works!</p>
+<div *ngFor="let reward of config.rewards">
+    <app-reward [config]="config" [reward]="reward"></app-reward>
+</div>

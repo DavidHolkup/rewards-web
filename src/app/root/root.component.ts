@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Config, Task } from './config';
+import { Config, Reward, Task } from './config';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +14,99 @@ export class RootComponent implements OnInit {
         ripple: false,
         confetti: 0,
         sound: false,
-        animation: false,
+        animation: true,
       },
-      background: 0,
+      background: 10,
       images: true,
-      emojis: true,
+      emojis: false,
     },
-    rewards: [],
+    rewards: [
+      new Reward({
+        name: "Emotikony",
+        description: "Zapne emotikony v uzivatelskem rozhrani.",
+        stars: 10,
+        emoji: "😆",
+        image: "../../assets/images/rewards/emoji.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 1,
+        callback: (config: Config) => {
+          config.features.emojis = true
+        }
+      }), new Reward({
+        name: "Obrazky",
+        description: "Zapne obrazky v uzivatelskem rozhrani.",
+        stars: 10,
+        emoji: "📷",
+        image: "../../assets/images/rewards/image.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 1,
+        callback: (config: Config) => {
+          config.features.images = true
+        }
+      }), new Reward({
+        name: "Zvuky",
+        description: "Zapne zvuky v uzivatelskem rozhrani.",
+        stars: 15,
+        emoji: "🎺",
+        image: "../../assets/images/rewards/sound.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 1,
+        callback: (config: Config) => {
+          config.features.button.sound = true
+        }
+      }), new Reward({
+        name: "Pozadi",
+        description: "Vylepsi pozadi aplikace.",
+        stars: 20,
+        emoji: "🤠",
+        image: "../../assets/images/rewards/pozadi.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 8,
+        callback: (config: Config) => {
+          config.features.background += 1
+        }
+      }), new Reward({
+        name: "Konfety",
+        description: "Vystreli konfety po kliknuti na tlacitko.",
+        stars: 20,
+        emoji: "🤩",
+        image: "../../assets/images/rewards/confetti.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 10,
+        callback: (config: Config) => {
+          config.features.button.confetti += 1
+        }
+      }), new Reward({
+        name: "Ripple",
+        description: "Zobrazi ripple efekt po kliknuti na tlacitko.",
+        stars: 2,
+        emoji: "😊",
+        image: "../../assets/images/rewards/ripple.webp",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 1,
+        callback: (config: Config) => {
+          config.features.button.ripple = true
+        }
+      }), new Reward({
+        name: "Animace",
+        description: "Zobrazi animaci po kliknuti na tlacitko.",
+        stars: 10,
+        emoji: "💥",
+        image: "../../assets/images/rewards/animation.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 1,
+        callback: (config: Config) => {
+          config.features.button.animation = true
+        }
+      }),
+    ],
     tasks: [
       new Task({
         name: "Naucit se otazku",

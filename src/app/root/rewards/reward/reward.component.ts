@@ -1,21 +1,21 @@
-import { Component, Input } from '@angular/core';
-import { Config, Task } from '../../config'
-import { confetti } from 'tsparticles-confetti';
-import { rubberBandAnimation, tadaAnimation } from 'angular-animations';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Config, Reward } from '../../config';
 import { AudioService } from 'src/app/common/audio.service';
 import { ConfettiService } from 'src/app/common/confetti.service';
+import { tadaAnimation } from 'angular-animations';
 
 @Component({
-  selector: 'app-task',
-  templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss'],
+  selector: 'app-reward',
+  templateUrl: './reward.component.html',
+  styleUrls: ['./reward.component.scss'],
   animations: [tadaAnimation()]
 })
-export class TaskComponent {
+export class RewardComponent {
 
-  @Input() task!: Task
+  @Input() reward!: Reward
   @Input() config!: Config
-
+  
+  disabled = true
   animateButton = false
 
   constructor(private audioService: AudioService, private confettiService: ConfettiService) {}
@@ -23,12 +23,10 @@ export class TaskComponent {
   onClick(event: MouseEvent) {
     setTimeout(() => this.animateButton = this.config.features.button.animation)
 
-    this.task.callback(this.config)
+    this.reward.callback(this.config)
 
     this.confettiService.shootConfetti(event, this.config)
-    this.audioService.playSound(this.task.sound, this.config)
+    this.audioService.playSound(this.reward.sound, this.config)
   }
 
 }
-
-

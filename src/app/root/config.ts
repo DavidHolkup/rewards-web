@@ -19,25 +19,46 @@ export interface Config {
       }
 }
 
-export interface Reward {
-    id: string,
-    cost: number,
+export interface IReward {
+    stars: number,
     purchased: number, // how many times was purchased
-    title: string,
+    maxPurchases: number, // how many times can be purchased
+    name: string,
     description?: string,
     image: string,     // path to image in assets
     sound: string,
-    onTime: boolean,
+    emoji: string,
     callback(config: Config): void,
 }
 
-export interface UiReward extends Reward {
-    effect: UiEffect,
-    classes: string[],
-}
+export class Reward implements IReward {
+    stars: number
+    purchased: number
+    maxPurchases: number
+    name: string
+    description?: string
+    image: string
+    sound: string
+    emoji: string
+    configCallback: (config: Config) => void
 
-export enum UiEffect {
-    Background, Pointer, ClickEffectRewards, ClickEffectTasks, SoundEffectRewards, SoundEffectTask
+    constructor(reward: IReward) {
+        this.stars = reward.stars
+        this.purchased = reward.purchased
+        this.maxPurchases = reward.maxPurchases
+        this.name = reward.name
+        this.description = reward.description
+        this.image = reward.image
+        this.sound = reward.sound
+        this.emoji = reward.emoji
+        this.configCallback = reward.callback
+    }
+
+    callback(config: Config): void {
+        this.purchased += 1
+        config.starsAvailable -= this.stars
+        this.configCallback(config)
+    }
 }
 
 export interface ITask {
