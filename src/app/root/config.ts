@@ -9,7 +9,7 @@ export interface Config {
             animation: boolean,
         }
         background: number,
-        images: boolean,
+        images: number,
         emojis: boolean,
     },
     rewards: Reward[],
@@ -25,7 +25,8 @@ export interface IReward {
     maxPurchases: number, // how many times can be purchased
     name: string,
     description?: string,
-    image: string,     // path to image in assets
+    image: string,
+    gif: string,
     sound: string,
     emoji: string,
     callback(config: Config): void,
@@ -38,6 +39,7 @@ export class Reward implements IReward {
     name: string
     description?: string
     image: string
+    gif: string
     sound: string
     emoji: string
     configCallback: (config: Config) => void
@@ -49,6 +51,7 @@ export class Reward implements IReward {
         this.name = reward.name
         this.description = reward.description
         this.image = reward.image
+        this.gif = reward.gif
         this.sound = reward.sound
         this.emoji = reward.emoji
         this.configCallback = reward.callback
@@ -66,6 +69,7 @@ export interface ITask {
   description: string
   stars: number
   image: string
+  gif: string
   sound: string
   emoji: string
 }
@@ -75,6 +79,7 @@ export class Task implements ITask {
   description: string
   stars: number
   image: string
+  gif: string
   sound: string
   emoji: string
 
@@ -83,6 +88,7 @@ export class Task implements ITask {
     this.description = task.description
     this.stars = task.stars
     this.image = task.image
+    this.gif = task.gif
     this.sound = task.sound
     this.emoji = task.emoji
   }
