@@ -14,10 +14,10 @@ export class RootComponent implements OnInit {
         ripple: false,
         confetti: 0,
         sound: false,
-        animation: true,
+        animation: false,
       },
-      background: 10,
-      images: 2,
+      background: 0,
+      images: 0,
       emojis: false,
     },
     rewards: [
