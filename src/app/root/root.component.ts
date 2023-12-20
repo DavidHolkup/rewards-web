@@ -13,7 +13,7 @@ export class RootComponent implements OnInit {
       button: {
         ripple: false,
         confetti: 0,
-        sound: true,
+        sound: false,
       },
       background: 0,
       images: true,
@@ -24,32 +24,38 @@ export class RootComponent implements OnInit {
         name: "Naucit se otazku",
         description: "Naucit se uplne novou otazku",
         stars: 2,
-        image: "../../assets/images/naucitSeOtazku.jpeg"
+        image: "../../assets/images/naucitSeOtazku.jpeg",
+        sound: "../../assets/sound/correct1.mp3",
       }, {
         name: "Zopakovat otazku",
         description: "Zopakovat si otazku, kterou uz jsi prosla.",
         stars: 1,
-        image: "../../assets/images/zopakovatOtazku.jpg"
+        image: "../../assets/images/zopakovatOtazku.jpg",
+        sound: "../../assets/sound/correct1.mp3",
       }, {
         name: "Zkouska A",
         description: "Dostat ze zkousky Acko.",
         stars: 15,
-        image: "../../assets/images/zkouskaA.jpeg"
+        image: "../../assets/images/zkouskaA.jpeg",
+        sound: "../../assets/sound/correct2.mp3",
       }, {
         name: "Zkouska B",
         description: "Dostat ze zkousky Bcko.",
         stars: 12,
-        image: "../../assets/images/zkouskaB.jpeg"
+        image: "../../assets/images/zkouskaB.jpeg",
+        sound: "../../assets/sound/correct2.mp3",
       }, {
         name: "Zkouska C",
         description: "Dostat ze zkousky Ccko.",
         stars: 8,
-        image: "../../assets/images/zkouskaC.png"
+        image: "../../assets/images/zkouskaC.png",
+        sound: "../../assets/sound/correct2.mp3",
       }, {
         name: "Statnice",
         description: "Udelat statnice.",
         stars: 30,
-        image: "../../assets/images/statnice.jpeg"
+        image: "../../assets/images/statnice.jpeg",
+        sound: "../../assets/sound/correct2.mp3",
       },
     ],
     starsAvailable: 10,

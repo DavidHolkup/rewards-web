@@ -39,4 +39,5 @@ export interface Task {
   description: string
   stars: number
   image: string
+  sound: string
 }

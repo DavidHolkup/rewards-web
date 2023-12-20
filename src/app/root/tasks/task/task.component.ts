@@ -46,6 +46,12 @@ export class TaskComponent {
     else if (this.config.features.button.confetti == 10) {
       this.confetti1(x, y);
     }
+
+    if (this.config.features.button.sound) {
+      const audio = new Audio();
+      audio.src = this.task.sound
+      audio.play()
+    }
   }
 
   confetti1(x: number, y: number) {
