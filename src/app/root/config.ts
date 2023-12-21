@@ -15,7 +15,8 @@ export interface Config {
     rewards: Reward[],
     tasks: Task[],
     stats: {
-        tasks: any
+        tasks: any,
+        rewards: any,
     }
 }
 
@@ -36,7 +37,8 @@ export interface ConfigData {
     rewards: IReward[],
     tasks: ITask[],
     stats: {
-        tasks: any
+        tasks: any,
+        rewards: any,
     }
 }
 
@@ -82,6 +84,10 @@ export class Reward implements IReward {
         this.purchased += 1
         config.starsAvailable -= this.stars
         this.configCallback(config)
+
+        let count = config.stats.rewards[this.name]
+        count ??= 0
+        config.stats.rewards[this.name] = count + 1
     }
 }
 
@@ -117,7 +123,10 @@ export class Task implements ITask {
     callback(config: Config) {
         config.starsAvailable += this.stars
         config.starsTotal += this.stars
-        config.stats.tasks[this.name] += 1
+
+        let count = config.stats.tasks[this.name]
+        count ??= 0
+        config.stats.tasks[this.name] = count + 1
     }
 }
 

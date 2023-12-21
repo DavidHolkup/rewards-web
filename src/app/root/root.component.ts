@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Config, ConfigData, Reward, Task } from './config';
 import { LocalStorageService } from '../common/localstorage.srvice';
-import { animationCallback, backgroundCallback, confettiCallback, emojiCallback, pictureCallback, rippleCallback, soundCallback } from '../common/callbacks';
+import { animationCallback, backgroundCallback, confettiCallback, emojiCallback, emptyCallback, pictureCallback, rippleCallback, soundCallback } from '../common/callbacks';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class RootComponent implements OnInit {
   particlesOptions = {}
 
   constructor(private storage: LocalStorageService) {
-
+      storage.clearStorage()
   }
 
   private defaultConfig: Config = {
@@ -107,6 +107,149 @@ export class RootComponent implements OnInit {
         purchased: 0,
         maxPurchases: 1,
         callback: animationCallback
+      }), new Reward({
+        name: "Umyti nadobi",
+        description: "David za tebe dnes umyje nadobi.",
+        stars: 6,
+        emoji: "🍽️",
+        image: "../../assets/images/rewards/dishes.png",
+        gif: "../../assets/images/rewards/dishes.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 100,
+        callback: emptyCallback
+      }), new Reward({
+        name: "Vyluxovani",
+        description: "David za tebe dnes vyluxuje.",
+        stars: 3,
+        emoji: "👨‍🦯",
+        image: "../../assets/images/rewards/vacuum.png",
+        gif: "../../assets/images/rewards/vacuum.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 100,
+        callback: emptyCallback
+      }), new Reward({
+        name: "Vytreni",
+        description: "David za tebe dnes vytre.",
+        stars: 8,
+        emoji: "🪣",
+        image: "../../assets/images/rewards/mop.png",
+        gif: "../../assets/images/rewards/mop.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 100,
+        callback: emptyCallback,
+      }), new Reward({
+        name: "Cteni",
+        description: "Muzes si precist 1 stranku z nejake pekne knizky. (Ne z ucebnice).",
+        stars: 1,
+        emoji: "📖",
+        image: "../../assets/images/rewards/read.png",
+        gif: "../../assets/images/rewards/read.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 1000,
+        callback: emptyCallback,
+      }), new Reward({
+        name: "Film/Serial",
+        description: "Muzes se podivat na 5 minut nejakeho pekneho filmu nebo serialu. (Ne prednasky).",
+        stars: 1,
+        emoji: "📺",
+        image: "../../assets/images/rewards/watchingTv.png",
+        gif: "../../assets/images/rewards/watchingTv.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 500,
+        callback: emptyCallback,
+      }), new Reward({
+        name: "Instagram",
+        description: "Muzes se podivat na 1 minutu na instagram.",
+        stars: 1,
+        emoji: "📷",
+        image: "../../assets/images/rewards/instagram.png",
+        gif: "../../assets/images/rewards/instagram.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 200,
+        callback: emptyCallback,
+      }), new Reward({
+        name: "Masaz nohou",
+        description: "Jedna deseti minutova masaz nohou.",
+        stars: 4,
+        emoji: "❤️",
+        image: "../../assets/images/rewards/feetMassage.png",
+        gif: "../../assets/images/rewards/feetMassage.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 50,
+        callback: emptyCallback,
+      }), new Reward({
+        name: "Masaz hlavy",
+        description: "Jedna deseti minutova masaz hlavy.",
+        stars: 4,
+        emoji: "💆‍♀️",
+        image: "../../assets/images/rewards/headMassage.png",
+        gif: "../../assets/images/rewards/headMassage.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 50,
+        callback: emptyCallback,
+      }), new Reward({
+        name: "Masaz",
+        description: "Jedna deseti minutova masaz.",
+        stars: 5,
+        emoji: "💝",
+        image: "../../assets/images/rewards/massage.png",
+        gif: "../../assets/images/rewards/massage.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 50,
+        callback: emptyCallback,
+      }), new Reward({
+        name: "Mala hra",
+        description: "Jedna mala hra. Karty, pexeso, domino...",
+        stars: 2,
+        emoji: "🃏",
+        image: "../../assets/images/rewards/cards.png",
+        gif: "../../assets/images/rewards/cards.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 100,
+        callback: emptyCallback,
+      }), new Reward({
+        name: "Velka hra",
+        description: "Jedna velka hra. Katan, Liska, Vez...",
+        stars: 6,
+        emoji: "🎮",
+        image: "../../assets/images/rewards/boardGames.png",
+        gif: "../../assets/images/rewards/boardGames.webp",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 100,
+        callback: emptyCallback,
+      }), new Reward({
+        name: "Zkouseni",
+        description: "David te na 5 minut bude zkouset. Maximalne 1 hodina denne.",
+        stars: 1,
+        emoji: "🤨",
+        image: "../../assets/images/rewards/think.png",
+        gif: "../../assets/images/rewards/think.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 100,
+        callback: emptyCallback,
+      }), new Reward({
+        name: "Snidane do postele",
+        description: "David ti pripravi snidani do postele.",
+        stars: 20,
+        emoji: "🥞",
+        image: "../../assets/images/rewards/breakfast.png",
+        gif: "../../assets/images/rewards/breakfast.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 10,
+        callback: emptyCallback,
       }),
     ],
     tasks: [
@@ -163,14 +306,8 @@ export class RootComponent implements OnInit {
     starsAvailable: 0,
     starsTotal: 0,
     stats: {
-      tasks: {
-        "Naucit se otazku": 0,
-        "Zopakovat otazku": 0,
-        "Zkouska A": 0,
-        "Zkouska B": 0,
-        "Zkouska C": 0,
-        "Statnice": 0,
-      }
+      tasks: { },
+      rewards: { }
     }
   }
 
@@ -186,6 +323,19 @@ export class RootComponent implements OnInit {
         new Reward({ ...data.rewards[4], callback: confettiCallback }),
         new Reward({ ...data.rewards[5], callback: rippleCallback }),
         new Reward({ ...data.rewards[6], callback: animationCallback }),
+        new Reward({ ...data.rewards[7], callback: emptyCallback }),
+        new Reward({ ...data.rewards[8], callback: emptyCallback }),
+        new Reward({ ...data.rewards[9], callback: emptyCallback }),
+        new Reward({ ...data.rewards[10], callback: emptyCallback }),
+        new Reward({ ...data.rewards[11], callback: emptyCallback }),
+        new Reward({ ...data.rewards[12], callback: emptyCallback }),
+        new Reward({ ...data.rewards[13], callback: emptyCallback }),
+        new Reward({ ...data.rewards[14], callback: emptyCallback }),
+        new Reward({ ...data.rewards[15], callback: emptyCallback }),
+        new Reward({ ...data.rewards[16], callback: emptyCallback }),
+        new Reward({ ...data.rewards[17], callback: emptyCallback }),
+        new Reward({ ...data.rewards[18], callback: emptyCallback }),
+        new Reward({ ...data.rewards[19], callback: emptyCallback }),
       ]
       const tasks = data.tasks.map(it => new Task(it))
       this.config = {

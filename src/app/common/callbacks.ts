@@ -27,3 +27,5 @@ export const rippleCallback = (config: Config) => {
 export const animationCallback = (config: Config) => {
     config.features.button.animation = true
 }
+
+export const emptyCallback = (config: Config) => { }
