@@ -16,7 +16,28 @@ export interface Config {
     tasks: Task[],
     stats: {
         tasks: any
-      }
+    }
+}
+
+export interface ConfigData {
+    starsAvailable: number,
+    starsTotal: number,
+    features: {
+        button: {
+            ripple: boolean,
+            confetti: number,
+            sound: boolean,
+            animation: boolean,
+        }
+        background: number,
+        images: number,
+        emojis: boolean,
+    },
+    rewards: IReward[],
+    tasks: ITask[],
+    stats: {
+        tasks: any
+    }
 }
 
 export interface IReward {
@@ -65,39 +86,39 @@ export class Reward implements IReward {
 }
 
 export interface ITask {
-  name: string
-  description: string
-  stars: number
-  image: string
-  gif: string
-  sound: string
-  emoji: string
+    name: string
+    description: string
+    stars: number
+    image: string
+    gif: string
+    sound: string
+    emoji: string
 }
 
 export class Task implements ITask {
-  name: string
-  description: string
-  stars: number
-  image: string
-  gif: string
-  sound: string
-  emoji: string
+    name: string
+    description: string
+    stars: number
+    image: string
+    gif: string
+    sound: string
+    emoji: string
 
-  constructor(task: ITask) {
-    this.name = task.name
-    this.description = task.description
-    this.stars = task.stars
-    this.image = task.image
-    this.gif = task.gif
-    this.sound = task.sound
-    this.emoji = task.emoji
-  }
+    constructor(task: ITask) {
+        this.name = task.name
+        this.description = task.description
+        this.stars = task.stars
+        this.image = task.image
+        this.gif = task.gif
+        this.sound = task.sound
+        this.emoji = task.emoji
+    }
 
-  callback(config: Config) {
-    config.starsAvailable += this.stars
-    config.starsTotal += this.stars
-    config.stats.tasks[this.name] += 1
-  }
+    callback(config: Config) {
+        config.starsAvailable += this.stars
+        config.starsTotal += this.stars
+        config.stats.tasks[this.name] += 1
+    }
 }
 
 

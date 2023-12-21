@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Config, Reward, Task } from './config';
+import { Config, ConfigData, Reward, Task } from './config';
+import { LocalStorageService } from '../common/localstorage.srvice';
+import { animationCallback, backgroundCallback, confettiCallback, emojiCallback, pictureCallback, rippleCallback, soundCallback } from '../common/callbacks';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,14 @@ import { Config, Reward, Task } from './config';
 })
 export class RootComponent implements OnInit {
 
-  config: Config = {
+  config!: Config
+  particlesOptions = {}
+
+  constructor(private storage: LocalStorageService) {
+
+  }
+
+  private defaultConfig: Config = {
     features: {
       button: {
         ripple: false,
@@ -31,9 +40,7 @@ export class RootComponent implements OnInit {
         sound: "../../assets/sound/correct1.mp3",
         purchased: 0,
         maxPurchases: 1,
-        callback: (config: Config) => {
-          config.features.emojis = true
-        }
+        callback: emojiCallback
       }), new Reward({
         name: "Obrazky",
         description: "Zapne obrazky v uzivatelskem rozhrani.",
@@ -44,9 +51,7 @@ export class RootComponent implements OnInit {
         sound: "../../assets/sound/correct1.mp3",
         purchased: 0,
         maxPurchases: 2,
-        callback: (config: Config) => {
-          config.features.images += 1
-        }
+        callback: pictureCallback
       }), new Reward({
         name: "Zvuky",
         description: "Zapne zvuky v uzivatelskem rozhrani.",
@@ -57,9 +62,7 @@ export class RootComponent implements OnInit {
         sound: "../../assets/sound/correct1.mp3",
         purchased: 0,
         maxPurchases: 1,
-        callback: (config: Config) => {
-          config.features.button.sound = true
-        }
+        callback: soundCallback
       }), new Reward({
         name: "Pozadi",
         description: "Vylepsi pozadi aplikace.",
@@ -70,9 +73,7 @@ export class RootComponent implements OnInit {
         sound: "../../assets/sound/correct1.mp3",
         purchased: 0,
         maxPurchases: 8,
-        callback: (config: Config) => {
-          config.features.background += 1
-        }
+        callback: backgroundCallback
       }), new Reward({
         name: "Konfety",
         description: "Vystreli konfety po kliknuti na tlacitko.",
@@ -83,9 +84,7 @@ export class RootComponent implements OnInit {
         sound: "../../assets/sound/correct1.mp3",
         purchased: 0,
         maxPurchases: 10,
-        callback: (config: Config) => {
-          config.features.button.confetti += 1
-        }
+        callback: confettiCallback
       }), new Reward({
         name: "Ripple",
         description: "Zobrazi ripple efekt po kliknuti na tlacitko.",
@@ -96,9 +95,7 @@ export class RootComponent implements OnInit {
         sound: "../../assets/sound/correct1.mp3",
         purchased: 0,
         maxPurchases: 1,
-        callback: (config: Config) => {
-          config.features.button.ripple = true
-        }
+        callback: rippleCallback
       }), new Reward({
         name: "Animace",
         description: "Zobrazi animaci po kliknuti na tlacitko.",
@@ -109,9 +106,7 @@ export class RootComponent implements OnInit {
         sound: "../../assets/sound/correct1.mp3",
         purchased: 0,
         maxPurchases: 1,
-        callback: (config: Config) => {
-          config.features.button.animation = true
-        }
+        callback: animationCallback
       }),
     ],
     tasks: [
@@ -179,9 +174,29 @@ export class RootComponent implements OnInit {
     }
   }
 
-  particlesOptions = {}
 
   ngOnInit() {
+    const data: ConfigData = this.storage.getObject("config")
+    if (data != null) {
+      const rewards = [
+        new Reward({ ...data.rewards[0], callback: emojiCallback }),
+        new Reward({ ...data.rewards[1], callback: pictureCallback }),
+        new Reward({ ...data.rewards[2], callback: soundCallback }),
+        new Reward({ ...data.rewards[3], callback: backgroundCallback }),
+        new Reward({ ...data.rewards[4], callback: confettiCallback }),
+        new Reward({ ...data.rewards[5], callback: rippleCallback }),
+        new Reward({ ...data.rewards[6], callback: animationCallback }),
+      ]
+      const tasks = data.tasks.map(it => new Task(it))
+      this.config = {
+        ...data,
+        rewards,
+        tasks,
+      }
+    }
+
+    this.config ??= this.defaultConfig
+
     this.particlesOptions = this.createParticleOptions();
   }
 
