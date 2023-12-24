@@ -5,10 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --base-href \"https://davidholkup.github.io/rewards-web/\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "electron": "electron ."
+    "electron": "electron .",
+    "deploy": "npm run build; npx ngh --dir=dist/rewards-web"
   },
   "private": true,
   "dependencies": {
