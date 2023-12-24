@@ -7,9 +7,10 @@
     </span>
   </mat-toolbar>
 
-  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" class="grow1" style="padding: 1rem 20rem">
-    <mat-tab label="Rewards"> <app-rewards [config]="config" class="grow1"></app-rewards> </mat-tab>
-    <mat-tab label="Tasks"> <app-tasks [config]="config" class="grow1"></app-tasks> </mat-tab>
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" class="grow1" style="padding: 1rem 0rem">
+    <mat-tab label="Odmeny"> <app-rewards [config]="config" class="grow1"></app-rewards> </mat-tab>
+    <mat-tab label="Ukoly"> <app-tasks [config]="config" class="grow1"></app-tasks> </mat-tab>
+    <mat-tab label="Galerie"> <app-gallery [config]="config" class="grow1"></app-gallery> </mat-tab>
   </mat-tab-group>
 
   <div class="bubbles" *ngIf="config.features.background === 2">

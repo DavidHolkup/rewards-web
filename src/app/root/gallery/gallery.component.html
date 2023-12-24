@@ -1,0 +1,7 @@
+<div  class="gallery">
+    <div class="image" *ngFor="let image of images; let i = index"> 
+        <img *ngIf="i < config.features.collection"     
+             [alt]="image"
+             [src]="image" />
+    </div>
+</div>

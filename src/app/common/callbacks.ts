@@ -28,4 +28,8 @@ export const animationCallback = (config: Config) => {
     config.features.button.animation = true
 }
 
+export const collectionCallback = (config: Config) => {
+    config.features.collection += 1
+}
+
 export const emptyCallback = (config: Config) => { }

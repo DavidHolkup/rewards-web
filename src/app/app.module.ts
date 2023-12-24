@@ -15,6 +15,8 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RewardComponent } from './root/rewards/reward/reward.component';
+import { GalleryComponent } from './root/gallery/gallery.component';
+import { GiftboxComponent } from './root/giftbox/giftbox.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { RewardComponent } from './root/rewards/reward/reward.component';
     RewardsComponent,
     TasksComponent,
     TaskComponent,
-    RewardComponent
+    RewardComponent,
+    GalleryComponent,
+    GiftboxComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Config, ConfigData, Reward, Task } from './config';
 import { LocalStorageService } from '../common/localstorage.srvice';
-import { animationCallback, backgroundCallback, confettiCallback, emojiCallback, emptyCallback, pictureCallback, rippleCallback, soundCallback } from '../common/callbacks';
+import { animationCallback, backgroundCallback, collectionCallback, confettiCallback, emojiCallback, emptyCallback, pictureCallback, rippleCallback, soundCallback } from '../common/callbacks';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class RootComponent implements OnInit {
   particlesOptions = {}
 
   constructor(private storage: LocalStorageService) {
-      storage.clearStorage()
+      // storage.clearStorage()
   }
 
   private defaultConfig: Config = {
@@ -28,6 +28,7 @@ export class RootComponent implements OnInit {
       background: 0,
       images: 0,
       emojis: false,
+      collection: 0
     },
     rewards: [
       new Reward({
@@ -250,6 +251,17 @@ export class RootComponent implements OnInit {
         purchased: 0,
         maxPurchases: 10,
         callback: emptyCallback,
+      }), new Reward({
+        name: "Obrazek",
+        description: "V galerii ti pribyde jeden novy obrazek.",
+        stars: 15,
+        emoji: "🥞",
+        image: "../../assets/images/rewards/image.jpeg",
+        gif: "../../assets/images/rewards/image.gif",
+        sound: "../../assets/sound/correct1.mp3",
+        purchased: 0,
+        maxPurchases: 80,
+        callback: collectionCallback,
       }),
     ],
     tasks: [
@@ -314,6 +326,7 @@ export class RootComponent implements OnInit {
 
   ngOnInit() {
     const data: ConfigData = this.storage.getObject("config")
+    console.log(data)
     if (data != null) {
       const rewards = [
         new Reward({ ...data.rewards[0], callback: emojiCallback }),
@@ -336,6 +349,7 @@ export class RootComponent implements OnInit {
         new Reward({ ...data.rewards[17], callback: emptyCallback }),
         new Reward({ ...data.rewards[18], callback: emptyCallback }),
         new Reward({ ...data.rewards[19], callback: emptyCallback }),
+        new Reward({ ...data.rewards[20], callback: collectionCallback }),
       ]
       const tasks = data.tasks.map(it => new Task(it))
       this.config = {
