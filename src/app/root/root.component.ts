@@ -12,12 +12,19 @@ export class RootComponent implements OnInit {
 
   config!: Config
   particlesOptions = {}
+  giftClicked = false
+
+  onGiftClicked() {
+    this.giftClicked = true
+    setTimeout(() => this.config.firstRun = false, 500)
+  }
 
   constructor(private storage: LocalStorageService) {
-      // storage.clearStorage()
+      storage.clearStorage()
   }
 
   private defaultConfig: Config = {
+    firstRun: true,
     features: {
       button: {
         ripple: false,
@@ -428,4 +435,8 @@ export class RootComponent implements OnInit {
   myParticles = "particles";
 
 
+  onEnd() {
+    console.log("end")
+    this.config.firstRun = false
+  }
 }

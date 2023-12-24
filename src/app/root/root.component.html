@@ -1,4 +1,4 @@
-<div class="col" [ngClass]="{'background1': config.features.background > 0}">
+<div class="col" *ngIf="!config.firstRun" [ngClass]="{'background1': config.features.background > 0}">
   <mat-toolbar style="z-index: 10;">
     <span>StarTrack ;)</span>
     <span style="margin-left: auto">{{config.starsAvailable}} 
@@ -42,3 +42,5 @@
   <ng-particles *ngIf="config.features.background > 3" [id]="myParticles" [options]="particlesOptions"></ng-particles>
 
 </div>
+
+<app-giftbox *ngIf="config.firstRun" [clicked]="giftClicked" (click)="onGiftClicked()"></app-giftbox>

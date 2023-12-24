@@ -1,1 +1,29 @@
-<p>giftbox works!</p>
+<div class="wrapper">
+    <div #gift class="gift-box-container">
+        <div class="gift-box">
+          <div class="gift-box__side gift-box__side--front"></div>
+          <div class="gift-box__side gift-box__side--back"></div>
+          <div class="gift-box__side gift-box__side--left"></div>
+          <div class="gift-box__side gift-box__side--right"></div>
+          <div class="gift-box__end gift-box__side--top"></div>
+          <div class="gift-box__end gift-box__side--bottom"></div>
+      
+          <div class="gift-box-lid__side gift-box-lid__side--front"></div>
+          <div class="gift-box-lid__side gift-box-lid__side--back"></div>
+          <div class="gift-box-lid__side gift-box-lid__side--left"></div>
+          <div class="gift-box-lid__side gift-box-lid__side--right"></div>
+          <div class="gift-box-lid__end gift-box-lid__side--top"></div>
+      
+          <ng-container *ngFor="let i of countArray">
+            <div class="ribbon-l" [style]="'--gift-box-position: ' + i + 'px; border-color: ' + ( i < 3 || i > 37 ? 'var(--gift-box-edge-color)' : 'var(--wrap-ribbon-color)')"></div>
+          </ng-container>
+          <div class="ribbon-l-end"></div>
+      
+          <ng-container *ngFor="let i of countArray">
+            <div class="ribbon-r" [style]="'--gift-box-position: ' + i + 'px; border-color: ' + ( i < 3 || i > 37 ? 'var(--gift-box-edge-color)' : 'var(--wrap-ribbon-color)')"></div>
+          </ng-container>
+          <div class="ribbon-r-end"></div>
+        </div>
+      </div>    
+</div>
+  

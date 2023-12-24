@@ -1,4 +1,5 @@
 export interface Config {
+    firstRun: boolean,
     starsAvailable: number,
     starsTotal: number,
     features: {
@@ -22,6 +23,7 @@ export interface Config {
 }
 
 export interface ConfigData {
+    firstRun: boolean,
     starsAvailable: number,
     starsTotal: number,
     features: {
