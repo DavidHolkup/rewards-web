@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "electron": "electron .",
-    "deploy": "npm run build; npx ngh --dir=dist/rewards-web"
+    "deploy": "ng build --base-href \"/rewards/\"; cd dist/rewards-web; git init; git remote add origin git@github.com:DavidHolkup/rewards.git; git add .; git commit -m \"Deploying to GitHub Pages\"; git branch -M main; git push -u origin main --force"
   },
   "private": true,
   "dependencies": {
