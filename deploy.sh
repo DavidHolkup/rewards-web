@@ -2,7 +2,7 @@
 
 npm run deploy
 
-cd dist/
+cd dist/rewards-web
 
 git init
 git remote add origin git@github.com:DavidHolkup/rewards.git
