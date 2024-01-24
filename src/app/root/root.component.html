@@ -11,6 +11,7 @@
     <mat-tab label="Odmeny"> <app-rewards [config]="config" class="grow1"></app-rewards> </mat-tab>
     <mat-tab label="Ukoly"> <app-tasks [config]="config" class="grow1"></app-tasks> </mat-tab>
     <mat-tab label="Galerie"> <app-gallery [config]="config" class="grow1"></app-gallery> </mat-tab>
+    <button mat-flat-button style="margin-left: auto;" (click)="downloadConfig()">Zalohovat</button>
   </mat-tab-group>
 
   <div class="bubbles" *ngIf="config.features.background === 2">

@@ -439,4 +439,17 @@ export class RootComponent implements OnInit {
     console.log("end")
     this.config.firstRun = false
   }
+
+  downloadConfig() {
+    const jsonString = JSON.stringify(this.config);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'data.json';
+
+    // Trigger the download
+    link.click();
+  }
+}
 }
