@@ -452,4 +452,3 @@ export class RootComponent implements OnInit {
     link.click();
   }
 }
-}
