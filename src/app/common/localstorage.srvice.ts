@@ -10,7 +10,7 @@ export class LocalStorageService {
   // Save object to local storage
   saveObject(key: string, value: any): void {
     localStorage.setItem(key, JSON.stringify(value));
-    console.log("config after:", getObject(key)
+    console.log("config after:", getObject(key))
   }
 
   // Get object from local storage
