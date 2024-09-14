@@ -333,7 +333,7 @@ export class RootComponent implements OnInit {
 
   ngOnInit() {
     const data: ConfigData = this.storage.getObject("config")
-    console.log(data)
+    console.log("config:", data)
     if (data != null) {
       const rewards = [
         new Reward({ ...data.rewards[0], callback: emojiCallback }),
